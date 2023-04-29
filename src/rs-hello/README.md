@@ -1,4 +1,4 @@
-# RS-Hello
+# Rust Hello World App
 
 Requires:
 
