@@ -4,6 +4,8 @@ Requires:
 
 - Rust
 - Wasmtime
+- DockerDesktop + containerd support
+- containerd
 
 ```bash
 rustup target add wasm32-wasi
@@ -24,20 +26,18 @@ install ~/code/runwasi/target/release/containerd-shim-wasmtime-v1 /usr/local/bin
 # build wasi container
 docker buildx build --platform wasi/wasm -t mrhockeymonkey/rs-hello:0.1 .
 docker push mrhockeymonkey/rs-hello:0.1
-
 ```
 
 ```bash
-# but containerd is best used from a ful ubuntu OS so switch back to linux for this
+# but containerd is best used from a full ubuntu OS so switch back to linux for this
 
-
-#---------------- not working yet
-
-
+# run using dockers buit in wasmedge
 docker container run --rm --name=dockerwasm \
   --runtime=io.containerd.wasmedge.v1 \
   --platform=wasi/wasm \
-  rs-hello:0.1
+  mrhockeymonkey/rs-hello:0.1
 
-sudo ctr run --rm --runtime=io.containerd.wasmedge.v1 docker.io/library/wasmtest:latest testwasm
+# run using containerd-wasmtime-shim
+sudo ctr image pull docker.io/mrhockeymonkey/rs-hello:0.1
+sudo ctr run --rm --runtime=io.containerd.wasmtime.v1 docker.io/mrhockeymonkey/rs-hello:0.1 rs-hello
 ```
