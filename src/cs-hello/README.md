@@ -18,13 +18,10 @@ docker push mrhockeymonkey/cs-hello:0.1
 ```bash
 # but containerd is best used from a full ubuntu OS so switch back to linux for this
 
-# run using dockers buit in wasmedge
-docker container run --rm --name=dockerwasm \
-  --runtime=io.containerd.wasmedge.v1 \
-  --platform=wasi/wasm \
-  mrhockeymonkey/cs-hello:0.2
+# dockers buit in wasmedge seems to hang when running dotnet...
 
 # run using containerd-wasmtime-shim
 sudo ctr image pull docker.io/mrhockeymonkey/cs-hello:0.2
 sudo ctr run --rm --runtime=io.containerd.wasmtime.v1 docker.io/mrhockeymonkey/cs-hello:0.2 cs-hello
+# ctr: Others("error setting up module: could not load module from file: failed to read input file"): unknown
 ```
