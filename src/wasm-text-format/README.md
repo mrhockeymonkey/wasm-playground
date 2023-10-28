@@ -8,7 +8,7 @@ This can then be compiled to the binary format in a few ways.
 
 This is some experimentation with "pure" web assembly to get an idea of how it works lower level
 
-### WebAssembly Binary Toolkit
+We can compile the text format in `.wasm` files using WebAssembly binary tools.
 
 https://github.com/WebAssembly/wabt
 
@@ -55,11 +55,15 @@ Done.
 
 ### Wasmtime
 
-Im not really sure what this even does yet... 
+I tried compiling a `.wat` file using wasmtime but I'm not really sure what this even does... 
+There seems to be a thing called "compiled wasm"
 
 ```pwsh
-// using wasmtime
-wasmtime compile -o gcd-wasmtime.cwasm gcd.wat 
+wasmtime compile -o add-wasmtime.cwasm add.wat 
 
+xxd add-wasmtime.cwasm | more
+00000000: 7f45 4c46 0201 01c8 0000 0000 0000 0000  .ELF............
 ```
+
+So its not a wasm file? Ill just leave that one alone for now
 
