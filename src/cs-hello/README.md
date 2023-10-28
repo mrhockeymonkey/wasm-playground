@@ -37,7 +37,7 @@ docker container run --rm --runtime=io.containerd.wasmedge.v1 --platform=wasi/wa
 # ContainerD Support 
 
 ```bash
-# run using containerd-wasmtime-shim
+# run using containerd-wasmtime-shim (built from source from containerd/runwasi repo)
 sudo ctr image pull docker.io/mrhockeymonkey/cs-hello:0.3
 sudo ctr run --rm --runtime=io.containerd.wasmtime.v1 docker.io/mrhockeymonkey/cs-hello:0.3 cs-hello
 # <No Output but is running with out any errors...>
