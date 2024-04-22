@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-example-hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rust-example-hello
+  template:
+    metadata:
+      labels:
+        app: rust-example-hello
+    spec:
+      runtimeClassName: wasmtime
+      containers:
+        - name: app
+          image: secondstate/rust-example-hello
+          #command: ["/"]
+          resources: # limit the resources to 128Mi of memory and 100m of CPU
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi

@@ -1,0 +1,2 @@
+[plugins.cri.containerd.runtimes.wasmtime]
+  runtime_type = "io.containerd.wasmtime.v1"

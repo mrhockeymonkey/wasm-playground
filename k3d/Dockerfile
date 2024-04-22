@@ -1,13 +1,14 @@
-FROM rancher/k3s:v1.24.6-k3s1
+#FROM rancher/k3s:v1.24.6-k3s1
 
-# copy shims from target directory into the /bin
-ADD https://github.com/containerd/runwasi/releases/download/containerd-shim-wasm/v0.1.2/containerd-shim-wasm-linux-amd64.tar.gz /tmp/
-RUN gzip -d /tmp/containerd-shim-wasm-linux-amd64.tar.gz && \
+# extend the deislabs image which already includes spin & wws
+FROM ghcr.io/deislabs/containerd-wasm-shims/examples/k3d:v0.11.1
 
-#COPY ./.tmp /bin/
-#tar -xvzf community_images.tar.gz -C some_custom_folder_name
+# copy shims from runwasi project
+ADD https://github.com/containerd/runwasi/releases/download/containerd-shim-wasmtime%2Fv0.4.0/containerd-shim-wasmtime-x86_64.tar.gz /tmp
+RUN tar -xvzf /tmp/containerd-shim-wasmtime-x86_64.tar.gz -C /tmp &&\
+cp /tmp/containerd-shim-wasmtime-v1 /bin
 
-# # copy in an containerd config into /etc/containerd/config.toml
-# COPY config.toml.tmpl /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
-ENTRYPOINT [ "" ]
-CMD [ "" ]
+
+# add containerd config for wasmtime
+COPY wasmtime-conf.txt /tmp
+RUN cat /tmp/wasmtime-conf.txt >> /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
