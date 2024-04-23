@@ -4,10 +4,10 @@ My playground for everthing wasm/wasi related...
 
 ## Summary
 
-`WebAssembly` is a portable bytecode format originally aimed to bring assembly-like prohramming to the web. It will run on the clients' browser and so needed to be hardware independant. 
+`WebAssembly` is a portable bytecode format originally aimed to bring assembly-like programming to the web. It will run on the clients' browser and so needed to be hardware independant. 
 Outside of a browser it can also run on a VM and runtime environments like wasmtime. It is langauge agnostic and aims to support any language.
 
-The `Component Model` defines how WebAssembly modules can be composed together. WebAssembly modules may import functions, global variables, etc. from the host runtime, as well as export such items to the host. However, there is no standard way to combine modules at runtime, nor is there a standard way to marshal high-level types (e.g. strings and records) across module boundaries. The component model addresses this by introducing interfaces, an ABI for high level types liek strings and records, and a mechanism for dynamically linking modules. 
+The `Component Model` defines how WebAssembly modules can be composed together. WebAssembly modules may import functions, global variables, etc. from the host runtime, as well as export such items to the host. However, there is no standard way to combine modules at runtime, nor is there a standard way to marshal high-level types (e.g. strings and records) across module boundaries. The component model addresses this by introducing interfaces (WIT), an ABI for high level types liek strings and records, and a mechanism for dynamically linking modules. 
 
 `WASI` is the WebAssembly Systems Interfaces and brings WASM to the server. On the Web, it uses the existing Web APIs provided by browsers. However outside of browsers, there's currently no standard set of APIs that WebAssembly programs can be written to for all platforms; windows, linux, android, etc. This makes it difficult to create truly portable non-Web WebAssembly programs. WASI is an initiative to fill this gap, with a clean set of APIs which can be implemented on multiple platforms by multiple engines
 
