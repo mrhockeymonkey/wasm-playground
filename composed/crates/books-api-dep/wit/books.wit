@@ -1,0 +1,12 @@
+package component:books-api-dep;
+
+interface books {
+    get-books: func() -> list<book>;
+    get-book: func(id: u32) -> book;
+
+    record book {
+        name: string,
+        author: string,
+        description: string
+    }
+}

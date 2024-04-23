@@ -1,0 +1,5 @@
+package component:cmd@0.1.0;
+
+world cmd {
+    import component:books-api-dep/books@0.1.0;
+}

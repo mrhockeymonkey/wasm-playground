@@ -1,0 +1,6 @@
+package component:books-api-dep;
+
+interface authors {
+    get-authors: func() -> list<string>;
+    get-author: func(id: u32) -> string;
+}

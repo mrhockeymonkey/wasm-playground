@@ -1,0 +1,9 @@
+package component:books-api-dep;
+
+// An example api providing access to books and authors
+world books-api {
+    import component:db-dep/get@0.1.0;
+
+    export books;
+    export authors;
+}

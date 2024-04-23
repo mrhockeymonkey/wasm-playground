@@ -1,0 +1,13 @@
+package component:db-dep@0.1.0;
+
+interface get {
+
+    // returns a json string of the record with given id from a given table
+    get-one: func(table: string, id: u32) -> string;
+    get-all: func(table: string) -> list<string>;
+
+}
+
+world db {
+    export get;
+}
