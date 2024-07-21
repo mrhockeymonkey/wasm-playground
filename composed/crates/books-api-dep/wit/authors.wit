@@ -1,4 +1,4 @@
-package component:books-api-dep;
+package component:books-api-dep@0.1.0;
 
 interface authors {
     get-authors: func() -> list<string>;

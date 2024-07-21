@@ -6,10 +6,8 @@ An example of composing multiple components together.
 cargo install wasm-tools
 
 # compose into a single wasm (requires renaming to kebab case)
-wasm-tools compose target/wasm32-wasi/debug/cmd.wasm \
-  -d target/wasm32-wasi/debug/books-api-dep.wasm \
-  -d target/wasm32-wasi/debug/db-dep.wasm \
-  -o composed.wasm
+source build.sh
+
   
 wasm-tools component wit composed.wasm # to see resulting wit
 wasmtime run composed.wasm
